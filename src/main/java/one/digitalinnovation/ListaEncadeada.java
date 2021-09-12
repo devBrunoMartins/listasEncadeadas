@@ -14,18 +14,29 @@ public class ListaEncadeada<T> {
 
     private No<T> getNo(int index){
         validaIndice(index);
-
         No<T> noAuxiliar = referenciaEntrada;
         No<T> noRetorno = null;
-
         for (int i = 0; i < this.size()-1; i++){
             noRetorno = noAuxiliar;
             noAuxiliar = noAuxiliar.getProximoNo();
         }
-
         return noRetorno;
 
     }
+
+    public T remove(int index){
+
+        No<T> noPivor = this.getNo(index);
+        if(index == 0){
+            referenciaEntrada = noPivor.getProximoNo();
+            return noPivor.getConteudo();
+        }
+
+        No<T> noAnterior = getNo(index - 1);
+        noAnterior.setProximoNo(noPivor.getProximoNo());
+        return noPivor.getConteudo();
+    }
+
 
     public T get(int index){
         return getNo(index).getConteudo();
