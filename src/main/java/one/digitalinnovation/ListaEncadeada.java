@@ -11,8 +11,8 @@ public class ListaEncadeada<T> {
         return referenciaEntrada == null;
     }
 
-    private No<T> getNo(int index){
 
+    private No<T> getNo(int index){
         validaIndice(index);
 
         No<T> noAuxiliar = referenciaEntrada;
@@ -25,7 +25,10 @@ public class ListaEncadeada<T> {
 
         return noRetorno;
 
+    }
 
+    public T get(int index){
+        return getNo(index).getConteudo();
     }
 
     public void validaIndice(int index){
